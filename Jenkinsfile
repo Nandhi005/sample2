@@ -58,6 +58,7 @@ pipeline {
                         variable: 'jenkins_Password'
                         )
                     ])
+                echo '${jenkins_Password}'
             }
         }
     }
@@ -65,7 +66,6 @@ pipeline {
     post {
         success {
             echo 'CI SUCCESS: Build, tests and packaging completed!'
-            echo '$jenkins_Password'
         }
 
         failure {
