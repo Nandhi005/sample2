@@ -19,19 +19,19 @@ pipeline {
         stage('Check Tools') {
             steps {
                 bat 'java -version'
-                bat 'C:\Users\NANDHEESWARAN\Downloads\apache-maven-3.9.16\bin\mvn.cmd -version'
+                bat 'C:\\Users\\NANDHEESWARAN\\Downloads\\apache-maven-3.9.16\\bin\\mvn.cmd -version'
             }
         }
 
         stage('Compile') {
             steps {
-                bat 'C:\Users\NANDHEESWARAN\Downloads\apache-maven-3.9.16\bin\mvn.cmd -B clean compile'
+                bat 'C:\\Users\\NANDHEESWARAN\\Downloads\\apache-maven-3.9.16\\bin\\mvn.cmd -B clean compile'
             }
         }
 
         stage('Unit Tests') {
             steps {
-                bat 'C:\Users\NANDHEESWARAN\Downloads\apache-maven-3.9.16\bin\mvn.cmd -B test'
+                bat 'C:\\Users\\NANDHEESWARAN\\Downloads\\apache-maven-3.9.16\\bin\\mvn.cmd -B test'
             }
             post {
                 always {
@@ -43,7 +43,7 @@ pipeline {
 
         stage('Package') {
             steps {
-                bat 'C:\Users\NANDHEESWARAN\Downloads\apache-maven-3.9.16\bin\mvn.cmd -B package -DskipTests'
+                bat 'C:\\Users\\NANDHEESWARAN\\Downloads\\apache-maven-3.9.16\\bin\\mvn.cmd -B package -DskipTests'
                 archiveArtifacts artifacts: 'target/*.jar',
                                  fingerprint: true
             }
