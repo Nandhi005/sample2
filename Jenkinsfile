@@ -52,6 +52,12 @@ pipeline {
         stage('Verify JAR') {
             steps {
                 bat 'java -jar target\\java-ci-demo-1.0.0.jar'
+                withCredentials([
+                    string(
+                        credentialsId: 'paasword'
+                        variable: 'jenkins_Password'
+                        )
+                    ])
             }
         }
     }
@@ -59,6 +65,7 @@ pipeline {
     post {
         success {
             echo 'CI SUCCESS: Build, tests and packaging completed!'
+            echo '$jenkins_Password'
         }
 
         failure {
