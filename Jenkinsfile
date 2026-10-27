@@ -54,7 +54,7 @@ pipeline {
                 bat 'java -jar target\\java-ci-demo-1.0.0.jar'
                 withCredentials([
                     string(
-                        credentialsId: 'paasword'
+                        credentialsId: 'paasword',
                         variable: 'jenkins_Password'
                         )
                     ])
