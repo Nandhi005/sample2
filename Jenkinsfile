@@ -57,8 +57,15 @@ pipeline {
                         credentialsId: 'paasword',
                         variable: 'jenkins_Password'
                         )
-                    ])
-                echo '${jenkins_Password}'
+                    ]) {
+                            bat ''' 
+                                if not defined jenkins_Password (
+                                    echo Credentials is missing
+                                    exit /b 1
+                                )
+                                echo '${jenkins_Password}'
+                                '''
+                }
             }
         }
     }
